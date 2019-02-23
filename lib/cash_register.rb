@@ -10,7 +10,7 @@ class CashRegister
     
     @all_items = []
     
-    @all_transactions = []
+    @last_transaction = 0
     
     if @employee_discount == nil 
       @cash_register = self
@@ -28,11 +28,11 @@ class CashRegister
     if quantity == nil 
       @total += price
       @all_items << title
-      @all_transactions << price 
+      @last_transaction = price 
     else 
       @total += price*quantity
       quantity.times {@all_items << title}
-      @all_transactions << price*quantity 
+      @last_transaction = price*quantity 
     end 
     @total 
   end 
@@ -52,8 +52,9 @@ class CashRegister
   end 
   
   def void_last_transaction
-    @total = @total - @all_transactions.last
-    @total 
+    #@total = @total - @all_transactions.last
+    #@total 
+    @total -= @total - @last_transaction
   end 
   
 end 

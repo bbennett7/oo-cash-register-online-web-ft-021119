@@ -25,19 +25,15 @@ class CashRegister
   end 
   
   def add_item(title, price, quantity = nil)
-#    if quantity == nil 
- #     @total += price
- #     @all_items << title
-#      @all_transactions << price 
-#    else 
- #     @total += price*quantity
-  #    quantity.times {@all_items << title}
-  #    @all_transactions << price*quantity 
-#    end 
-
-    @total += price*quantity
-  #    quantity.times {@all_items << title}
-  #    @all_transactions << price*quantity 
+    if quantity == nil 
+      @total += price
+      @all_items << title
+      @all_transactions << price 
+    else 
+      @total += price*quantity
+      quantity.times {@all_items << title}
+      @all_transactions << price*quantity 
+    end 
     @total 
   end 
   
